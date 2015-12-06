@@ -9,23 +9,23 @@
 ####################################################
 
 # Directorio de Trabajo
-rutaWork='~/mirror-debian-8'
+rutaWork='/root/mirror-debian-8'
 cd $rutaWork
 # Script responsable del repositorio principal
-main='./Debian.8.Main.sh'
+main='Debian.8.Main.sh'
 # Script responsable del repositorio backports
-backports='./Debian.8.Backports.sh'
+backports='Debian.8.Backports.sh'
 # Script responsable del repositorio seguridad
-security='./Debian.8.Security.sh'
+security='Debian.8.Security.sh'
 # Script responsable del repositorio multimedia
-multimedia='./Debian.8.Multimedia.sh'
+multimedia='Debian.8.Multimedia.sh'
 
-/bin/bash $rutaWork/$main 2>> $rutaWork/error_debmirror_main.log
+/bin/bash $rutaWork/$main 2> $rutaWork/error_debmirror_main.log
 sleep 10
-/bin/bash $rutaWork/$backports 2>> $rutaWork/error_debmirror_backports.log
+/bin/bash $rutaWork/$backports 2> $rutaWork/error_debmirror_backports.log
 sleep 10
-/bin/bash $rutaWork/$security 2>> $rutaWork/error_debmirror_security.log
+/bin/bash $rutaWork/$security 2> $rutaWork/error_debmirror_security.log
 sleep 10
-/bin/bash $rutaWork/$multimedia 2>> $rutaWork/error_debmirror_multimedia.log
+/bin/bash $rutaWork/$multimedia 2> $rutaWork/error_debmirror_multimedia.log
 sleep 10
 exit
