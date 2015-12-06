@@ -2,7 +2,8 @@
 f1d1394ed0ae3e08e47ca8d227f4e2cf  Debian.8.Main.sh
 5991d7870892df71c55044576ced5c75  Debian.8.Multimedia.sh
 d7cdd34f53c09479cab71125ec9564e9  Debian.8.Security.sh
-a929a4b10d8f20b57ad3d8e519da8949  md5_checksums
-d41d8cd98f00b204e9800998ecf8427e  README.md
+7702f203b58979ebbc31bfaeb44f219c  LICENSE
+6ef9855d689d3900795ef277ac345f7a  md5_checksums
+e57c1d3ede4baf023a7635893d267bcd  README
 b065727c7dc6fe6c9ae6d4d5ce030b0a  START.debmirror.sh
 d41d8cd98f00b204e9800998ecf8427e  STOP.debmirror.sh
