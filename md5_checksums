@@ -5,5 +5,5 @@ d7cdd34f53c09479cab71125ec9564e9  Debian.8.Security.sh
 7702f203b58979ebbc31bfaeb44f219c  LICENSE
 6ef9855d689d3900795ef277ac345f7a  md5_checksums
 e57c1d3ede4baf023a7635893d267bcd  README
-b065727c7dc6fe6c9ae6d4d5ce030b0a  START.debmirror.sh
-d41d8cd98f00b204e9800998ecf8427e  STOP.debmirror.sh
+4b1e3f9b3b1000520777ff8f058884b3  START.debmirror.sh
+1c5b50aa45461a8cf83174c031098e16  STOP.debmirror.sh
