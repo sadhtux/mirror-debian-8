@@ -1,13 +1,11 @@
 #!/bin/bash
 #
-# script principal para la puesta en funcionamiento
+# Script principal para la puesta en funcionamiento
 # del Mirror local de Debian 8 (jessie)
 #
 # Nombre del Archivo: START.debmirror.sh
 # Fecha: 05-12-2015
 # Version 1.0
-# Autor: skorkyduarte@gmail.com
-#
 ####################################################
 
 # Directorio de Trabajo
