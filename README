@@ -1,0 +1,4 @@
+Las distribución elegida para la
+El Archivo "Debian.8.Main.sh" apunta al dominio cantv.net ya que es el ISP Venezolano con mayor acceso en Venezuela
+las arquitecturas seleccionadas para el mirror son i386 y amd64, y a su vez las ramas son main, contrib y non-free.
+
