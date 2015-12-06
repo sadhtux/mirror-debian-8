@@ -1,4 +1,93 @@
-Las distribución elegida para la
-El Archivo "Debian.8.Main.sh" apunta al dominio cantv.net ya que es el ISP Venezolano con mayor acceso en Venezuela
-las arquitecturas seleccionadas para el mirror son i386 y amd64, y a su vez las ramas son main, contrib y non-free.
+--------------------------------
+DESCRIPCION DE ESTE REPOSITORIO
+--------------------------------
+Se pretende hacer uso de la herramienta "debmirror" para crear una replica local de los repositorios 
+para la distribucion de GNU/Linux Debian en su version estable jessie.
 
+
+------------------------
+CONSIDERACIONES PREVIAS
+------------------------
+* Aunque el repositorio esta disponible para cualquier persona en cualquier parte del mundo, se deja
+  claro que esta pensado para usuarios del ISP Venezolano CANTV, lo cual no es limitativo, y se puede
+  elegir para la descarga de los paquetes el host de su preferencia.
+
+* Se asume que ud posee instalada la ultima version estable del sistema operativo GNU/Linux Debian.
+
+* Se asume que posee una conexion a internet con ancho de banda apropiada para realizar el proyecto.
+
+* Se asume que ud tiene un conocimiento basico para el manejo de la interfaz de comandos (Terminal).
+
+* Ud debera poseer acceso como root al equipo donde desea realizar la replica ya que sera necesaria
+  la instalacion de algunos paquetes extras.
+
+* Sera necesario instalar un servidor web en el equipo donde se llevara a cabo la replica, en nuestro
+  caso sera Apache.
+
+* Debera contar con suficiente espacio en disco para la descarga completa de los repositorios.
+
+
+-----------------------------------
+INSTALACION DE PAQUETES NECESARIOS
+-----------------------------------
+apt-get update
+apt-get upgrade
+apt-get install apache2 apache2-doc apache2-utils debmirror
+systemctl restart apache2
+
+
+--------------------------------
+CREACION DE DIRECTORIOS PREVIOS 
+--------------------------------
+
+mkdir /var/www/html/debian -p
+mkdir /var/www/html/debian-multimedia -p
+mkdir /var/www/html/jessie-backports -p
+mkdir /var/www/html/debian-security -p
+
+-----------------------
+PERMISOLOGIA NECESARIA
+-----------------------
+chown -R www-data:www-data /var/www/html/
+
+-----------------------------------------------
+CONTENIDO DE LOS ARCHIVOS A DESCARGAR Y SU USO
+-----------------------------------------------
+EL archivo "md5_checksums" como su nombre lo indica, es la relacion de los archivos subidos al
+repositorio, con sus respectivos hash originales.
+
+El archivo "START.debmirror.sh" es el script encargado de iniciar uno a uno los demas scripts
+para realizar la replica en su equipo local, es a su vez el archivo que necesitara añadir al
+crontab de su equipo, si desea automatizar la actualizacion del repositorio de manera automatica.
+
+El archivo "STOP.debmirror.sh" sera el encargado de finalizar el proceso de descarga de los repo-
+sitorios de manera automatizada, es decir, usted podrá progamar el apagado cuando lo desee, siempre
+y cuando agregue las respectivas instrucciones en el cron de su equipo. (provisto más adelante).
+
+El Archivo "Debian.8.Main.sh" apunta al dominio cantv.net ya que es el ISP Venezolano con mayor 
+acceso en Venezuela, las arquitecturas seleccionadas para el mirror son; i386 y amd64, y a su vez 
+las ramas son main, contrib y non-free.
+
+El Archivo "Debian.8.Backports.sh" apunta al dominio www.deb-multimedia.org, el cual posee alojado 
+en sus servidores un mirror tanto para los backports de debian como para el repositorio multimedia.
+De igual forma la version elegida en este archivo es jessie y las arquitecturas a descargar seran; 
+i386 y amd64, con sus respectivas ramas main y non-free.
+
+El Archivo "Debian.8.Multimedia.sh" apunta al dominio www.deb-multimedia.org, el cual posee alojado
+en sus servidores un mirror tanto para los backports de debian como para el repositorio multimedia.
+De igual forma la version elegida en este archivo es jessie y las arquitecturas a descargar seran;
+i386 y amd64, con sus respectivas ramas main y non-free.
+
+El Archivo "Debian.8.Security.sh" apunta al dominio security.debian.org, el cual nos permitira
+contar con los ultimos parches de seguridad para mantener nuestro sistema al dia, de igual forma
+la version elegida es jessie y las ramas son las siguiente; main, contrib y non-free.
+
+
+----------------------------------------------------------
+EJEMPLO DE CRONTAB PARA AUTOMATIZAR EL PROCESO DE REPLICA
+----------------------------------------------------------
+Con la instruccion "crontab -e" usted podra agregar las siguientes lineas para que la tarea de
+inicio y stop de la replica sean automatizadas.
+
+00 18 * * *     ~/mirror-debian-8/START.debmirror.sh
+00 07 * * *     ~/mirror-debian-8/STOP.debmirror.sh
